@@ -4,13 +4,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="customCardViewStyle">@style/CustomCardView</item>-->
     </style>
 
-    <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">8dp</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="android:layout_margin">8dp</item>
-        <item name="cardBackgroundColor">?colorPrimary</item>
+    <style name="CustomCardView" parent="carbon_FrameLayout">
+        <item name="android:padding">8dp</item>
+        <item name="carbon_elevation">8dp</item>
+        <item name="carbon_cornerRadius">16dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:background">?colorPrimary</item>
         <item name="imageSize">150dp</item>
         <item name="textSize">50sp</item>
     </style>

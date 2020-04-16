@@ -6,29 +6,39 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.card.MaterialCardView;
+import carbon.widget.FrameLayout;
 
-public class CustomCardView extends MaterialCardView {
+public class CustomCardView extends FrameLayout {
 
     public CustomCardView(Context context) {
-        this(context, null);
+//        super(context);
+//        super(context, null, R.attr.customCardViewStyle);
+//        initView(context, null, 0);
+        this(context, null, R.attr.customCardViewStyle);
     }
 
     public CustomCardView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+//        super(context, attrs);
+//        super(context, attrs, R.attr.customCardViewStyle);
+//        initView(context, attrs, 0);
+        this(context, attrs, R.attr.customCardViewStyle);
     }
 
     public CustomCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initView(context, attrs, defStyleAttr);
+    }
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomCardView, defStyleAttr, R.style.CustomCardView);
+    private void initView(Context context, AttributeSet attrs, int defStyleAttr) {
 
-        float imageSize = a.getDimension(R.styleable.CustomCardView_imageSize, 0);
-        float textSize = a.getDimension(R.styleable.CustomCardView_textSize, 0);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomCardView, defStyleAttr, 0);
+
+        float imageSize = a.getDimension(R.styleable.CustomCardView_imageSize, convertPxToDp(context, 100f));
+        float textSize = a.getDimension(R.styleable.CustomCardView_textSize, 25);
 
         a.recycle();
 
-        inflate(context, R.layout.custom_view, this);
+        inflate(getContext(), R.layout.custom_view, this);
 
         ImageView imageView = findViewById(R.id.imageView);
         imageView.getLayoutParams().height = (int) imageSize;
@@ -37,6 +47,10 @@ public class CustomCardView extends MaterialCardView {
         TextView textView = findViewById(R.id.textView);
         textView.setTextSize(textSize);
 
+    }
+
+    private int convertPxToDp(Context context, Float dp) {
+        return (int) (dp * context.getResources().getDisplayMetrics().density);
     }
 
 }
