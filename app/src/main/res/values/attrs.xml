@@ -4,8 +4,7 @@
     <attr name="customCardViewStyle" format="reference" />
 
     <declare-styleable name="CustomCardView">
-        <attr name="imageSize" format="dimension|reference" />
-        <attr name="textSize" format="dimension|reference" />
+        <attr name="text" format="string|reference" />
     </declare-styleable>
 
 </resources>

@@ -3,7 +3,8 @@ package com.myapp;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import carbon.widget.FrameLayout;
@@ -11,46 +12,33 @@ import carbon.widget.FrameLayout;
 public class CustomCardView extends FrameLayout {
 
     public CustomCardView(Context context) {
-//        super(context);
-//        super(context, null, R.attr.customCardViewStyle);
-//        initView(context, null, 0);
-        this(context, null, R.attr.customCardViewStyle);
+        super(new ContextThemeWrapper(context, R.style.Widget_CustomCardView), null, 0);
+        initView(context, null);
     }
 
     public CustomCardView(Context context, AttributeSet attrs) {
-//        super(context, attrs);
-//        super(context, attrs, R.attr.customCardViewStyle);
-//        initView(context, attrs, 0);
-        this(context, attrs, R.attr.customCardViewStyle);
+        super(new ContextThemeWrapper(context, R.style.Widget_CustomCardView), attrs, 0);
+        initView(context, attrs);
     }
 
     public CustomCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context, attrs, defStyleAttr);
+        initView(context, attrs);
     }
 
-    private void initView(Context context, AttributeSet attrs, int defStyleAttr) {
+    private void initView(Context context, AttributeSet attrs) {
 
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomCardView, defStyleAttr, 0);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomCardView, 0, 0);
 
-        float imageSize = a.getDimension(R.styleable.CustomCardView_imageSize, convertPxToDp(context, 100f));
-        float textSize = a.getDimension(R.styleable.CustomCardView_textSize, 25);
+        String text = a.getString(R.styleable.CustomCardView_text);
 
         a.recycle();
 
-        inflate(getContext(), R.layout.custom_view, this);
-
-        ImageView imageView = findViewById(R.id.imageView);
-        imageView.getLayoutParams().height = (int) imageSize;
-        imageView.getLayoutParams().width = (int) imageSize;
+        LayoutInflater.from(context).inflate(R.layout.custom_view, this, true);
 
         TextView textView = findViewById(R.id.textView);
-        textView.setTextSize(textSize);
+        textView.setText(text);
 
-    }
-
-    private int convertPxToDp(Context context, Float dp) {
-        return (int) (dp * context.getResources().getDisplayMetrics().density);
     }
 
 }

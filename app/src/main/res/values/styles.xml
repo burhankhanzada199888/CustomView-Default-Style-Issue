@@ -1,20 +1,26 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="customCardViewStyle">@style/CustomCardView</item>
     </style>
 
-    <style name="CustomCardView" parent="carbon_FrameLayout">
-        <item name="android:padding">8dp</item>
+    <style name="Widget" />
+
+    <style name="Widget.CustomCardView" parent="carbon_FrameLayout">
         <item name="carbon_elevation">8dp</item>
         <item name="carbon_cornerRadius">16dp</item>
-        <item name="android:layout_margin">16dp</item>
         <item name="android:background">?colorPrimary</item>
-        <item name="imageSize">150dp</item>
-        <item name="textSize">50sp</item>
+    </style>
+
+    <style name="MainActivity" />
+
+    <style name="MainActivity.CustomCardView" parent="Widget.CustomCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 
 </resources>
