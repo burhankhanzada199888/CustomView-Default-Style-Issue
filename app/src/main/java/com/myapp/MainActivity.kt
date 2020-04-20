@@ -2,6 +2,7 @@ package com.myapp
 
 import android.content.Context
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.widget.LinearLayout.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
