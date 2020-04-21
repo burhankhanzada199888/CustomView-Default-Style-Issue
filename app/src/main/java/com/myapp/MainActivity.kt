@@ -2,7 +2,6 @@ package com.myapp
 
 import android.content.Context
 import android.os.Bundle
-import android.view.ContextThemeWrapper
 import android.widget.LinearLayout.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         params.setMargins(margin, margin, margin, margin)
 
-        val cardView = CustomCardView(this)
+        val cardView = CustomCardView(this, null, 0, R.style.MainActivity_CustomCardView)
         cardView.layoutParams = params
 
         content.addView(cardView)

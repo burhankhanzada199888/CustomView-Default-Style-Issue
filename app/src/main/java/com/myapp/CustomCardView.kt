@@ -2,21 +2,20 @@ package com.myapp
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.widget.TextView
 import carbon.widget.FrameLayout
 
 class CustomCardView : FrameLayout {
 
-    constructor(context: Context) : super(
-        ContextThemeWrapper(context, R.style.Widget_CustomCardView), null, 0
-    ) {
+    constructor(context: Context) : super(context, null, R.attr.customCardViewStyle) {
         initView(context, null)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(
-        ContextThemeWrapper(context, R.style.Widget_CustomCardView), attrs, 0
+        context,
+        attrs,
+        R.attr.customCardViewStyle
     ) {
         initView(context, attrs)
     }
@@ -27,14 +26,26 @@ class CustomCardView : FrameLayout {
         initView(context, attrs)
     }
 
+    // API 21+ only
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyle: Int) : super(
+        context, attrs, defStyleAttr, defStyle
+    ) {
+        initView(context, attrs)
+    }
+
     private fun initView(
         context: Context,
         attrs: AttributeSet?
     ) {
-        val a =
-            context.obtainStyledAttributes(attrs, R.styleable.CustomCardView, 0, 0)
+        val a = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.CustomCardView,
+            R.attr.customCardViewStyle,
+            R.style.Widget_CustomCardView
+        )
         val text = a.getString(R.styleable.CustomCardView_text)
         a.recycle()
+
         LayoutInflater.from(context).inflate(R.layout.custom_view, this, true)
         val textView = findViewById<TextView>(R.id.textView)
         textView.text = text
