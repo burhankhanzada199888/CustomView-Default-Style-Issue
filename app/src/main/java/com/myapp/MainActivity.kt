@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         params.setMargins(margin, margin, margin, margin)
 
-        val cardView = CustomCardView(this, null, 0, R.style.MainActivity_CustomCardView)
+        val cardView = CustomCardView(this)
         cardView.layoutParams = params
 
         content.addView(cardView)

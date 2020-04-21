@@ -8,40 +8,50 @@ import carbon.widget.FrameLayout
 
 class CustomCardView : FrameLayout {
 
-    constructor(context: Context) : super(context, null, R.attr.customCardViewStyle) {
-        initView(context, null)
-    }
-
-    constructor(context: Context, attrs: AttributeSet?) : super(
+    // API 21+ only
+    constructor(context: Context) : super(
         context,
-        attrs,
-        R.attr.customCardViewStyle
+        null,
+        R.attr.customCardViewStyle,
+        R.style.Widget_CustomCardView
     ) {
-        initView(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context, attrs, defStyleAttr
-    ) {
-        initView(context, attrs)
+        initView(context, null,R.attr.customCardViewStyle,R.style.Widget_CustomCardView)
     }
 
     // API 21+ only
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyle: Int) : super(
-        context, attrs, defStyleAttr, defStyle
+    constructor(context: Context, attrs: AttributeSet?) : super(
+        context,
+        attrs,
+        R.attr.customCardViewStyle,
+        R.style.Widget_CustomCardView
     ) {
-        initView(context, attrs)
+        initView(context, attrs,R.attr.customCardViewStyle,R.style.Widget_CustomCardView)
     }
 
-    private fun initView(
-        context: Context,
-        attrs: AttributeSet?
+    // API 21+ only
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        R.style.Widget_CustomCardView
+    ) {
+        initView(context, attrs,defStyleAttr,R.style.Widget_CustomCardView)
+    }
+
+    // API 21+ only
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
+        context, attrs, defStyleAttr, defStyleRes
+    ) {
+        initView(context, attrs, defStyleAttr, defStyleRes)
+    }
+
+    private fun initView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int
     ) {
         val a = context.obtainStyledAttributes(
             attrs,
             R.styleable.CustomCardView,
-            R.attr.customCardViewStyle,
-            R.style.Widget_CustomCardView
+            defStyleAttr,
+            defStyleRes
         )
         val text = a.getString(R.styleable.CustomCardView_text)
         a.recycle()

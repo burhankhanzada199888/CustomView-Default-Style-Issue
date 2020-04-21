@@ -15,5 +15,5 @@ android {
 
 dependencies {
     implementation "com.google.android.material:material:1.2.0-alpha06"
-    implementation 'com.github.ZieIony.carbon:carbon:d3fdce140e'
+    implementation 'com.github.ZieIony.carbon:carbon:e5c330b711'
 }
